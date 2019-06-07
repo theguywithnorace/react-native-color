@@ -48,7 +48,7 @@ const Gradient = ({ style, gradientSteps, maximumValue, getStepColor }) => {
           );
       }
   }
-  }
+  
   return <View style={[styles.container, style]}>{rows}</View>;
 };
 
