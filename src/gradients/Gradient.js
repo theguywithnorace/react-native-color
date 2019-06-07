@@ -5,18 +5,49 @@ import PropTypes from 'prop-types';
 const Gradient = ({ style, gradientSteps, maximumValue, getStepColor }) => {
   const rows = [];
   for (let i = 0; i <= gradientSteps; i++) {
-    rows.push(
-      <View
-        key={i}
-        style={{
-          flex: 1,
-          marginLeft: Platform.OS === 'ios' ? -StyleSheet.hairlineWidth : 0,
-          backgroundColor: getStepColor(i * maximumValue / gradientSteps),
-                  borderRadius: 3,
+      if (i === 0 ) {
+          rows.push(
+              <View
+                  key={i}
+                  style={{
+                      flex: 1,
+                      marginLeft: Platform.OS === 'ios' ? -StyleSheet.hairlineWidth : 0,
+                      backgroundColor: getStepColor(i * maximumValue / gradientSteps),
+                      borderRadius: 3,
+                      position: 'absolute'
 
-        }}
-      />
-    );
+                  }}
+              />
+          );
+      } else if( i === gradientSteps){
+          rows.push(
+              <View
+                  key={i}
+                  style={{
+                      flex: 1,
+                      marginLeft: Platform.OS === 'ios' ? -StyleSheet.hairlineWidth : 0,
+                      backgroundColor: getStepColor(i * maximumValue / gradientSteps),
+                      borderRadius: 3,
+                      position: 'absolute',
+
+
+                  }}
+              />
+          );
+      }
+      else{
+          rows.push(
+              <View
+                  key={i}
+                  style={{
+                      flex: 1,
+                      marginLeft: Platform.OS === 'ios' ? -StyleSheet.hairlineWidth : 0,
+                      backgroundColor: getStepColor(i * maximumValue / gradientSteps),
+                  }}
+              />
+          );
+      }
+  }
   }
   return <View style={[styles.container, style]}>{rows}</View>;
 };
@@ -37,3 +68,4 @@ Gradient.propTypes = {
   maximumValue: PropTypes.number.isRequired,
   getStepColor: PropTypes.func.isRequired
 };
+
