@@ -11,7 +11,9 @@ const Gradient = ({ style, gradientSteps, maximumValue, getStepColor }) => {
         style={{
           flex: 1,
           marginLeft: Platform.OS === 'ios' ? -StyleSheet.hairlineWidth : 0,
-          backgroundColor: getStepColor(i * maximumValue / gradientSteps)
+          backgroundColor: getStepColor(i * maximumValue / gradientSteps),
+                  borderRadius: 3,
+
         }}
       />
     );
